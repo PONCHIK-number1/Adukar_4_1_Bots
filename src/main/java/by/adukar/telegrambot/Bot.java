@@ -35,36 +35,22 @@ public class Bot extends TelegramLongPollingBot {
     @SneakyThrows
     public void sendAnswerFromBot(Update update){
         Long chatId = update.getMessage().getChatId();
-        switch (update.getMessage().getText()){
-            case Commands.START:{
-                userService.addUserToList(userService.createUserFromUpdate(update));
-                sendMsg(textService.getPropValues(Paths.HELLO_STRING_PATH, Text.SAY_HELLO_PROPERTY),chatId);
-                sendPhoto(textService.getPropValues(Paths.PHOTOS_URLS_PATH, Photos.HELLO_PHOTO_PATH), chatId);
-                break;
-            }
-            case Commands.COLORS: {
-                sendMsg(Color.RED.getCode(), chatId);
-                break;
-            }
-            case Commands.BUTTONS:{
-                sendMsgWithButtons("Сделайте выбор:", replyButtons.keyboardMarkupForSelectStudentOrTeacher(),chatId);
-                break;
-            }
-            case Commands.USERS:{
-                sendMsg(userService.getAllUsers(), chatId);
-                break;
-            }
-            case Commands.LOCATION:{
-                sendLocation(chatId);
-                break;
-            }
-            default:{
-                sendMsg("Write admin to get help @yqpuss", chatId);
-                sendContact(chatId);
-                break;
-            }
+      if(update.getMessage().getText().equals("/start")){
+          sendMsg("что тебе надо? /location /menu", chatId);
+          sendMsgWithButtons("behbrjh", replyButtons.keyboardMarkupForSelectStudentOrTeacher(), chatId);
         }
+        if(update.getMessage().getText().equals("/photo")){
+            sendPhoto("https://img.gazeta.ru/files3/364/12751364/joker-2019-joaquin-phoenix-clown-790x444-pic905-895x505-29466.jpg", chatId);
+        }
+        if(update.getMessage().getText().equals("/location")){
+            sendLocation(chatId);
+        }
+        if(update.getMessage().getText().equals("Телефон")){
+            sendContact(chatId);
+        }
+
     }
+
 
     public synchronized void sendMsg(String message, Long chatId) {
         SendMessage sendMessage = new SendMessage();
@@ -79,9 +65,9 @@ public class Bot extends TelegramLongPollingBot {
 
     public synchronized void sendContact(Long chatId) {
         SendContact sendContact = new SendContact();
-        sendContact.setPhoneNumber("+375447357152");
-        sendContact.setFirstName("Anton");
-        sendContact.setLastName("Kupreichik");
+        sendContact.setPhoneNumber("+375255470035");
+        sendContact.setFirstName("Daniil");
+        sendContact.setLastName("Pershin");
         sendContact.setChatId(chatId);
         try {
             execute(sendContact);
@@ -105,8 +91,8 @@ public class Bot extends TelegramLongPollingBot {
     public synchronized void sendLocation(Long chatId){
         SendLocation sendLocation = new SendLocation();
         sendLocation.setChatId(chatId);
-        sendLocation.setLatitude(Float.valueOf("-33.830693"));
-        sendLocation.setLongitude(Float.valueOf("151.219"));
+        sendLocation.setLatitude(Float.valueOf("53.9098297"));
+        sendLocation.setLongitude(Float.valueOf("30.3127583"));
 
         try {
             execute(sendLocation);
@@ -141,11 +127,11 @@ public class Bot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "adukar4_1bot";
+        return "Givard228_bot";
     }
 
     @Override
     public String getBotToken() {
-        return "1741890763:AAEiZmqGQOPicqDbZrkDD_V26rRHI35Ik4k";
+        return "1770185547:AAGG5We728TGvjKdRTPWAqu0b0qoCsRn-DE";
     }
 }
