@@ -1,15 +1,12 @@
 package by.adukar.telegrambot.buttons.inline;
 
-public class InlineButtons {
-    import by.adukar.telegrambot.consts.Paths;
-    import by.adukar.telegrambot.service.TextService;
-    import lombok.SneakyThrows;
-    import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
-    import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
-    import java.io.IOException;
-    import java.util.ArrayList;
-    import java.util.List;
-}
+import lombok.SneakyThrows;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class InlineButtons {
     @SneakyThrows
     public InlineKeyboardMarkup keyboardMarkup() {

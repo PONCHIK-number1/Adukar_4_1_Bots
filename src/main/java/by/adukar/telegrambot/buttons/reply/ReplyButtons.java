@@ -2,8 +2,8 @@ package by.adukar.telegrambot.buttons.reply;
 
 import by.adukar.telegrambot.consts.Paths;
 import by.adukar.telegrambot.service.TextService;
-import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
-import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardRow;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,12 +23,34 @@ public class ReplyButtons {
         keyboardMarkup.setResizeKeyboard(true);
         keyboardMarkup.setOneTimeKeyboard(false);
         keyboardFirstRow.add("Телефон");
-        keyboardFirstRow.add("Помощь");
+        keyboardFirstRow.add("Просмотр");
 
-        keyboardSecondRow.add("кнопка 1");
-        keyboardSecondRow.add("кнопка 2");
-        keyboardSecondRow.add("кнопка 3");
 
+        keyboard.add(keyboardFirstRow);
+
+        keyboardMarkup.setKeyboard(keyboard);
+        return keyboardMarkup;
+
+    }
+
+    public ReplyKeyboardMarkup keyboardMarkupForSelectPlace() {
+
+        ArrayList<KeyboardRow> keyboard = new ArrayList<>();
+        KeyboardRow keyboardFirstRow = new KeyboardRow();
+        KeyboardRow keyboardSecondRow = new KeyboardRow();
+
+        ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
+        keyboardMarkup.setSelective(true);
+        keyboardMarkup.setResizeKeyboard(true);
+        keyboardMarkup.setOneTimeKeyboard(false);
+
+        keyboardFirstRow.add("Отель 1");
+        keyboardFirstRow.add("Отель 2");
+        keyboardFirstRow.add("Отель 3");
+        keyboardFirstRow.add("Место 2");
+        keyboardFirstRow.add("Место 3");
+
+        keyboardSecondRow.add("Назад");
 
 
         keyboard.add(keyboardFirstRow);
